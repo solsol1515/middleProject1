@@ -14,17 +14,17 @@ public class InsertEmp {
 			System.out.println("드라이버 로딩 성공");
 			
 			// 2. 연결 객체 얻어오기
-			String ur1 ="jdbc:oracle:thin:@192.168.0.50:1521:xe";
-			String user ="scott";
-			String pass ="tiger";
+			String ur1  = "jdbc:oracle:thin:@192.168.0.50:1521:xe";
+			String user = "scott";
+			String pass = "tiger";
 			
 			Connection con = DriverManager.getConnection(ur1, user, pass);
 			System.out.println("디비 연결 성공");
 			
 			// -- 입력값
 						String bonmyeong = "본명";
-						int weolgup = 10000;
-						String jikup = "IT";
+						int weolgup		 = 10000;
+						String jikup	 = "IT";
 			
 			// 3. SQL 문장
 			// 		10번 부서의 사원의 월급을 10% 인상
