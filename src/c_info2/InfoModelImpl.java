@@ -122,7 +122,7 @@ public void insertInfo(InfoVO vo) throws SQLException{
 					   vo.setAge(rs.getInt("AGE"));
 					   vo.setGender(rs.getString("GENDER"));
 					   vo.setHome(rs.getString("HOME"));
-				   }
+				   } // end of if
 			   }finally {
 	   				// 6. 닫기
 	   				ps.close();
@@ -186,7 +186,7 @@ public void insertInfo(InfoVO vo) throws SQLException{
 				   ps.setString(6, vo.getTel());
 				   
 				// 5. 전송
-				   ps.executeUpdate(); // delete 문장이라 executeUpdate사용 
+				   ps.executeUpdate(); // update 문장이라 executeUpdate사용 
 				   
 				   }finally {
 		   				// 6. 닫기
