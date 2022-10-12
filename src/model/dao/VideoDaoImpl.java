@@ -45,7 +45,7 @@ public class VideoDaoImpl implements VideoDao{
 		// 5. sql 전송
 			for(int i=0; i<count; i++) {
 				ps.executeUpdate();
-			}
+			} // end of for
 		} finally {
 		// 6. 닫기
 			ps.close();

@@ -71,7 +71,7 @@ public class VideoView extends JPanel
 	} // end of connectDB()
 	
 	public void eventProc(){
-		// 체크박스가 눌렸을 때 tfInseftCount 가 쓸수있게됨
+		// 체크박스가 눌렸을 때 tfInseftCount 가 쓸수있게 됨
 		cbMultiInsert.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent ev){
 			/*	if(cbMultiInsert.isSelected()){

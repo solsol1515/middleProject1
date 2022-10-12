@@ -3,7 +3,6 @@ package model.dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 
 import model.CustomerDao;
 import model.vo.CustomerVO;
@@ -19,7 +18,6 @@ public class CustomerDaoImpl implements CustomerDao{
 	 	// 1. 드라이버로딩
 		Class.forName(DRIVER);
 	    System.out.println("드라이버로딩 성공");
-		
 	}
 	
 	// 회원 가입
@@ -30,10 +28,11 @@ public class CustomerDaoImpl implements CustomerDao{
 		
 		try {
 			   con = DriverManager.getConnection(URL, USER, PASS);
+			   
 		// 3. sql 문장 만들기
 		String sql = "INSERT INTO CUSTOMER (custName, custTel1, custTel2, custAddr, custEmail) VALUES (?, ?, ?, ?, ?)";
 		
-		// 4. sql 전송객체 (PreparedStatement)		
+		// 4. sql 전송객체 (PrepareStatement)		
 		ps = con.prepareStatement(sql);
 		   ps.setString(1, vo.getCustName());
 		   ps.setString(2, vo.getCustTel1());
@@ -49,6 +48,7 @@ public class CustomerDaoImpl implements CustomerDao{
 			  ps.close();
 			  con.close();
 		   }
+		
 	   }// end of insertCustomer()
 	
 	/*
@@ -57,7 +57,9 @@ public class CustomerDaoImpl implements CustomerDao{
 	 * 리턴값: 전화번호 검색에 따른 고객정보
 	 * 역할: 사용자가 입력한 전화번호를 받아서 해당하는 고객 정보를 리턴 
 	 */
+	
 	public CustomerVO selectByTel(String tel) throws Exception{
+		
 		// 2. 연결 객체 얻어오기
 		Connection con 		= null;
 		PreparedStatement ps = null;
@@ -67,7 +69,7 @@ public class CustomerDaoImpl implements CustomerDao{
 		con = DriverManager.getConnection(URL, USER, PASS);
 		
 		// 3. sql 문장 만들기
-		String sql = "UPDATE CUSTOMER SET custname =?, custtel2 =?, custTel2 = ?, custaddr = ?, custemail = ?";
+		String sql = "UPDATE CUSTOMER SET custname =?, custtel1 =?, custTel2 = ?, custaddr = ?, custemail = ?";
 		
 		// 4. 전송객체 
 		ps = con.prepareStatement(sql);
@@ -93,10 +95,37 @@ public class CustomerDaoImpl implements CustomerDao{
 	} // end of selectByTel()
 	
 	public int updateCustomer(CustomerVO vo) throws Exception{
-		// (1) 사용자 입력 값 얻어오기
-		int result = 0;
 		
+		// 2. 연결 객체 얻어오기
+		   Connection con 		= null;
+		   PreparedStatement ps = null;
+		  
+		   try {
+			   con = DriverManager.getConnection(URL, USER, PASS);
+			   
+		// 3. sql 문장 만들기
+		   String sql = "UPDATE CUSTOMER SET CUSTNAME =?, CUSTTEL2 = ?,		"
+				   + " CUSTADDR = ?, CUSTEMAIL = ?"
+				   + " WHERE CUSTTEL1 = ?";
 		
+		// 4. 전송 객체 얻어오기
+		   ps = con.prepareStatement(sql);
+		   ps.setString(1, vo.getCustName()); // 물음표 전화번호 값 얻어오기
+		   ps.setString(2, vo.getCustTel2());
+		   ps.setString(3, vo.getCustAddr());
+		   ps.setString(4, vo.getCustEmail());
+		   ps.setString(5, vo.getCustTel2());
+		
+		// 5. 전송
+		   ps.executeUpdate();
+		   } finally {
+		// 6. 닫기
+			   ps.close();
+  			   con.close();	   
+		   } // end of finally
+		   
+		   int result = 0;
+		   
 		return result;
 	} // end of updateCustomer()
 }

@@ -137,7 +137,7 @@ public class CustomerView extends JPanel
 		// JOptionPane.showMessageDialog(null, "검색");
 	} // end of searchByTel()
 	
-	// 회원정보수정
+	// 회원 정보 수정
 	public void updateCustomer(){
 			// 1. 입력한 전화번호 얻어오기
 			String name 	= tfCustName.getText();
@@ -154,6 +154,7 @@ public class CustomerView extends JPanel
 			vo.setCustTel2(tel2);
 			vo.setCustAddr(addr);
 			vo.setCustEmail(email);
+			
 			// 3. 모델의 updateCustomer()호출
 			try {
 			model.updateCustomer(vo);
@@ -162,6 +163,9 @@ public class CustomerView extends JPanel
 				e.printStackTrace();
 			}
 			
+			// 4. 화면의 입력 값 지우기
+			clearText();
+
 	} // end of updateCustomer()
 	
 	
