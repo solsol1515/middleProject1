@@ -6,9 +6,9 @@ import view.*;
 
 public class VideoShop extends JFrame 
 {
-	CustomerView		customer;	// 
-	VideoView			video;		//
-	RentView			rent;		// 
+	CustomerView		customer;
+	VideoView			video;		
+	RentView			rent;		 
 
 	public VideoShop(){
 		//각각의 화면을 관리하는 클래스 객체 생성
