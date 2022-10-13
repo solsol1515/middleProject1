@@ -9,6 +9,10 @@ public class VideoVO {
 	String actor;				// 배우
 	String exp;					// 설명
 	
+	public VideoVO() {}
+	
+	public VideoVO(String string, String genre2, String title2, String director2, String actor2, String exp2) {
+	}
 	public int getVideoNo() {
 		return videoNo;
 	}

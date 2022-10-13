@@ -94,6 +94,7 @@ public class VideoView extends JPanel
 		// 검색한 열을 클릭했을 때
 		
 		tableVideo.addMouseListener(new MouseAdapter(){
+			
 			public void mouseClicked(MouseEvent ev){
 				
 				try{
@@ -101,16 +102,24 @@ public class VideoView extends JPanel
 					int col = 0;	// 검색한 열을 클릭했을 때 클릭한 열의 비디오번호
 					// Object -> Integer -> int 형변환
 					int vNum = ((Integer)tableVideo.getValueAt(row, col)).intValue();
-					JOptionPane.showMessageDialog(null, vNum);
+					// JOptionPane.showMessageDialog(null, vNum);
 					
-					 
+					VideoVO vo = model.selectByVnum (vNum);
+					// 화면에 비디오 정보의 값들을 각각 출력
+					tfVideoNum.setText(String.valueOf(vo.getVideoNo()));
+					comVideoJanre.setSelectedItem(vo.getGenre());
+					tfVideoTitle.setText(vo.getVideoName());	
+					tfVideoDirector.setText(vo.getDirector());
+					tfVideoActor.setText(vo.getActor());
+					taVideoContent.setText(vo.getExp());
+					
 				}catch(Exception ex){
 					System.out.println("실패 : "+ ex.getMessage());
 				}
 				
 			}
 		});
-	}		
+	} // end of eventProc()		
 	
 	// 버튼 이벤트 핸들러 만들기
 	class ButtonEventHandler implements ActionListener{
@@ -188,25 +197,71 @@ public class VideoView extends JPanel
 	
 	// 수정 클릭시 - 비디오 정보 수정
 	public void modifyVideo(){
-		JOptionPane.showMessageDialog(null, "수정");
-	}
+		
+		String genre 	= String.valueOf(comVideoJanre.getSelectedIndex());
+		String title	= tfVideoTitle.getText();
+		String director = tfVideoDirector.getText();
+		String actor 	= tfVideoActor.getText();
+		String exp 		= taVideoContent.getText();
+		int vNum 		= Integer.parseInt(tfVideoNum.getText());
+		
+		VideoVO vo = new VideoVO();
+			
+			vo.setGenre((String)comVideoJanre.getSelectedItem());
+			vo.setVideoName(tfVideoTitle.getText());
+			vo.setDirector(tfVideoDirector.getText());
+			vo.setActor(tfVideoActor.getText());
+			vo.setExp(taVideoContent.getText());
+			vo.setVideoNo(Integer.parseInt(tfVideoNum.getText()));
+			
+			try {
+				model.modifyVideo(vo);
+				// JOptionPane.showMessageDialog(null, "수정");
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			
+			clearText();
+			
+	} // end of modifyVideo()
 	
 	// 삭제 클릭시 - 비디오 정보 삭제
 	public void deleteVideo(){
 		
-		JOptionPane.showMessageDialog(null, "삭제");
-	}
+		int videono = Integer.parseInt(tfVideoNum.getText());
+		String genre = (String)comVideoJanre.getSelectedItem();
+		String title = tfVideoTitle.getText();
+		String director = tfVideoDirector.getText();
+		String actor = tfVideoActor.getText();
+		String exp = taVideoContent.getText();
+		
+		VideoVO vo = new VideoVO(Integer.toString(videono), genre, title, director, actor, exp);
+		
+		vo.setVideoNo(videono);
+		try {
+			model.deleteVideo(videono);
+		clearText();	
+		} catch(Exception e){
+			
+		}
+		
+		// JOptionPane.showMessageDialog(null, "삭제");
+		
+	} // end of deleteVideo()
 	
 	// 비디오 현황 검색
-	public void searchVideo(){
-		// JOptionPane.showMessageDialog(null, "검색");
+	public void searchVideo(){			
 		try {
-		tbModelVideo.data = model.selectVideo();	
+			// 사용자가 선택하거나 입력한 값 얻어오기
+			int idx = comVideoSearch.getSelectedIndex(); // 검색 콤보박스 선택한 값
+			String word = tfVideoSearch.getText(); // 사용자가 입력한 검색값
+			
+		tbModelVideo.data = model.selectVideo(idx, word);	
 		tbModelVideo.fireTableDataChanged(); // 모델 쪽에서 데이터가 변경된 것을 뷰쪽으로 신호줌
 		}catch(Exception ex) {
 			System.out.println("검색 실패: " + ex.getMessage());
 	}
-	}
+	} // end of searchVideo()
 	
 	//  화면설계 메소드
 	public void addLayout(){
@@ -314,7 +369,7 @@ public class VideoView extends JPanel
 		add(p_west);
 		add(p_east);
 		
-	}
+	} // end of addLayout()
 	
 	//화면에 테이블 붙이는 메소드 
 	class VideoTableModel extends AbstractTableModel { 
