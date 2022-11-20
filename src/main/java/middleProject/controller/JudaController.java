@@ -19,6 +19,7 @@ public class JudaController {
 	 @Autowired
 	 private JudaService judaService;
 	 
+	 // 로그인 post
 	 @RequestMapping("loginSuccess.do")
 	 public void selectAllLogin(LoginVO vo, Model m) {
 		 m.addAttribute("logSuccess", judaService.selectAllLogin(vo));

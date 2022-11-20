@@ -18,7 +18,6 @@
 <a href="sangse.do">상세 페이지</a><br/>
 <hr/>
 
-<a href="login3.do">들어가기(회원가입 / 로그인)</a><br/>
 <a href="join.do">함께하기</a><br/>
 <a href="cart.do">장바구니</a><br/>
 <a href="myPage.do">나만의 공간</a><br/>

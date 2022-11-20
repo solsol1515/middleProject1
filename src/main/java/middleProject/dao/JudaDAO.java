@@ -3,6 +3,8 @@ package middleProject.dao;
 import middleProject.domain.LoginVO;
 
 public interface JudaDAO {
-
-	public Integer selectAllLogin(LoginVO vo);
+	
+	// 로그인
+	public Integer selectAllLogin(LoginVO vo) ;
+	
 }

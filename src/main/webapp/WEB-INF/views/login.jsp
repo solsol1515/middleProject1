@@ -8,24 +8,25 @@
 </head>
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<link src="resources/js/login_ok.js">
+<script src="https://code.jquery.com/jquery-3.4.1.js"
+  			integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  			crossorigin="anonymous">
+  </script>
 <script type="text/javascript" src="/js/login.js"></script>
 <script type="text/javascript" src="/js/login_ok.js"></script>
+
 <script>
 	let id   = "<%= (String)session.getAttribute("id")%>";
 	let pw = "<%= (String)session.getAttribute("pw")%>";
 </script>
 
-<script type="text/javascript">
-	if(id==null){
-		
-	}else{
-		
-	}
-</script>
+
 
 <link href="resources/css/style_login.css" rel="stylesheet" type="text/css">
 
 <body>
+
   <div class="parent clearfix">
     <div class="bg-illustration">
       <img src="resources/images/로고.png" alt="logo">
@@ -43,9 +44,9 @@
         <h1>酒 다<br />로 그 인</h1>
     
         <div class="login-form">
-          <form action="">
-            <input type="text" placeholder="아이디" name="id" id="id">
-            <input type="password" placeholder="비밀번호" name="pw" id="pw">
+          <form action="" id="login_form" method="post">
+            <input type="text"  class="id" name="id" placeholder="아이디" value=>
+            <input type="password" class="pw" name="pw" placeholder="비밀번호" id="pw">
 
             <div class="remember-form">
               <input type="checkbox">
@@ -63,7 +64,7 @@
             	<a href='views/join.do'><b>회원가입</b></a>
             </div>
 
-            <button type="submit" id="btn_submit">들 어 가 기</button>
+            <button type="submit" id="btn_submit" value="들 어 가 기">들 어 가 기</button>
 
           </form>
         </div>
@@ -71,5 +72,7 @@
       </div>
       </div>
   </div>
+  
+  
 </body>
 </html>

@@ -113,7 +113,7 @@
 									<th></th>
 									<th></th>
 									<th></th> -->
-									<th class="product-total">Total</th>
+									<th class="product-total">총액</th>
 								</tr>
 							</thead>
 						
@@ -134,8 +134,6 @@
                               <br/>
                               
                             </div>
-                           
-        
                           </td>
                           	<!-- <th></th>
                           	<th></th>
@@ -185,21 +183,21 @@
 
 					<!-- Start Column 1 -->
 					<div class="col-12 col-md-6 col-lg-4 mb-4 mb-md-0">
-						<h5 class><a href="index.do" ><span class=""><b>상세 설명</b></span></a></h5>
+						<h6 class><a href="index.do" ><span class=""><b>상세설명</b></span></a></h6>
 					</div> 
 					<!-- End Column 1 -->
 
 
 					<!-- Start Column 2 -->
 					<div class="col-12 col-md-6 col-lg-4 mb-4 mb-md-0">
-						<h5 class><a href="review.do" ><span class=""><b>상품 후기</b></span></a></h5>
+						<h6 class><a href="review.do" ><span class=""><b>상품후기</b></span></a></h6>
 					</div> 
 					<!-- End Column 2 -->
 
 
 					<!-- Start Column 3 -->
 					<div class="col-12 col-md-6 col-lg-4 mb-4 mb-md-0">
-						<h5 class><a href="question.do" ><span class=""><b >질의 응답</b></span></a></h5>
+						<h6 class><a href="question.do" ><span class=""><b>질의응답</b></span></a></h6>
 					</div> 
 					<!-- End Column 3 -->
 				
