@@ -34,6 +34,7 @@
 		<script src="resources/js/custom.js"></script>
 
 <!-- 상단 메뉴탭 -->
+<!-- Start Header/Navigation -->
 		<nav class="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark" arial-label="Furni navigation bar">
 			<div class="container">
 				<a class="navbar-brand" href="index.do"><img src="resources/images/로고1.png" alt="logo"></a>
@@ -56,7 +57,6 @@
 					</ul>
 				</div>
 			</div>
-				
 		</nav>
 		<!-- End Header/Navigation -->
 
@@ -181,24 +181,24 @@
 					</div>
 				</div>
 
-				<div class="row">
+				<div class="row" style="text-align:center">
 
 					<!-- Start Column 1 -->
-					<div class="col-12 col-md-6 col-lg-4 mb-5 mb-md-0">
+					<div class="col-12 col-md-6 col-lg-4 mb-4 mb-md-0">
 						<h5 class><a href="index.do" ><span class=""><b>상세 설명</b></span></a></h5>
 					</div> 
 					<!-- End Column 1 -->
 
 
 					<!-- Start Column 2 -->
-					<div class="col-12 col-md-6 col-lg-4 mb-5 mb-md-0">
+					<div class="col-12 col-md-6 col-lg-4 mb-4 mb-md-0">
 						<h5 class><a href="review.do" ><span class=""><b>상품 후기</b></span></a></h5>
 					</div> 
 					<!-- End Column 2 -->
 
 
 					<!-- Start Column 3 -->
-					<div class="col-12 col-md-6 col-lg-4 mb-5 mb-md-0">
+					<div class="col-12 col-md-6 col-lg-4 mb-4 mb-md-0">
 						<h5 class><a href="question.do" ><span class=""><b >질의 응답</b></span></a></h5>
 					</div> 
 					<!-- End Column 3 -->
@@ -221,7 +221,7 @@
 			</div>
 			
 			<div class="product-section">
-				<img src="resources/images/고흥유자주1.jpg"/>
+				<center><img src="resources/images/고흥유자주1.jpg"/></center>
 			
 			</div>
 		</nav>
